@@ -10,9 +10,6 @@ on:
         type: choice
         options:
           - Run tests
-          - test_successful_log_in
-          - test_successful_post_creation
-          - test_validation_messages
 
 jobs:
   test:
@@ -32,12 +29,3 @@ jobs:
       - name: Run tests
         if: "github.event.inputs.deployment_target == 'Run tests'"
         run: pytest
-      - name: test_successful_log_in
-        if: "github.event.inputs.deployment_target == 'test_successful_log_in'"
-        run: pytest test_case.py::TestWebSite::test_successful_log_in
-      - name: test_successful_post_creation
-        if: "github.event.inputs.deployment_target == 'test_successful_post_creation'"
-        run: pytest test_case.py::TestWebSite::test_successful_post_creation
-      - name: test_validation_messages
-        if: "github.event.inputs.deployment_target == 'test_validation_messages'"
-        run: pytest test_case.py::TestWebSite::test_validation_messages
