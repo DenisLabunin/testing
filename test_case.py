@@ -36,7 +36,7 @@ class TestWebSite:
         author = browser.find_element(By.CSS_SELECTOR, 'input#author')
         author.send_keys(TestWebSite.author_name)
         button = browser.find_element(By.CSS_SELECTOR, 'button[type="submit"]')
-        TestWebSite.current_date = str(datetime.now().strftime('%B %#d, %Y, %#I:%M:%S %p'))
+        TestWebSite.current_date = datetime.now().strftime('%B %-d, %Y, %-I:%M:%S %p')
         button.click()
         success = browser.find_element(By.XPATH, '//p[text()="Post was successfully created!"]').text
         assert success == 'Post was successfully created!', "Post was not created"
