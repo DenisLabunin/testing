@@ -3,11 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture(scope='class')
-def browser():
+@pytest.fixture(autouse=True)
+def browser(request):
     options = Options()
     options.add_argument('--headless')
     browser = webdriver.Chrome(options=options)
-    browser.implicitly_wait(8)
+    request.cls.browser = browser
     yield browser
     browser.quit()
