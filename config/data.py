@@ -1,8 +1,9 @@
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 
 class Data:
-    load_dotenv()
     LOGIN = os.getenv("LOGIN")
     PASSWORD = os.getenv("PASSWORD")

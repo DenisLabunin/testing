@@ -1,10 +1,8 @@
 import platform
-
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
-import os
 
 
 class PostCreation(BasePage):
@@ -37,7 +35,7 @@ class PostCreation(BasePage):
             self.CURRENT_TIME = datetime.now().strftime('%B %-d, %Y, %-I:%M:%S %p')
         assert self.wait.until(EC.visibility_of_element_located(self.SUCCESS)).is_displayed()
 
-    def data_last_post(self):
+    def checking_the_created_post(self):
         title = self.wait.until(EC.visibility_of_element_located(self.TITLE_POST)).text
         author = self.wait.until(EC.visibility_of_element_located(self.AUTHOR_POST)).text
         date = self.wait.until(EC.visibility_of_element_located(self.DATE_POST)).text

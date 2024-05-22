@@ -21,7 +21,7 @@ class TestWebSite(BaseTest):
         self.post_creation_page.open(Links.CREATE_POST_PAGE)
         self.post_creation_page.enter_all_field()
         self.post_creation_page.open(Links.DASHBOARD_PAGE)
-        self.post_creation_page.data_last_post()
+        self.post_creation_page.checking_the_created_post()
 
     def test_validation_messages(self):
         self.login_page.open(Links.LOGIN_PADE)
@@ -30,7 +30,7 @@ class TestWebSite(BaseTest):
         self.login_page.click_submit_button()
         self.login_page.is_opened(Links.DASHBOARD_PAGE)
         self.post_creation_page.open(Links.CREATE_POST_PAGE)
-        self.validation_messages.check_message()
+        self.validation_messages_page.check_message()
 
 
 
