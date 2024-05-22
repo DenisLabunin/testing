@@ -1,7 +1,10 @@
+import platform
+
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
+import os
 
 
 class PostCreation(BasePage):
@@ -28,8 +31,10 @@ class PostCreation(BasePage):
         self.wait.until(EC.element_to_be_clickable(self.CONTENT_FIELD)).send_keys(self.CONTENT)
         self.wait.until(EC.element_to_be_clickable(self.AUTHOR_FIELD)).send_keys(self.AUTHOR)
         self.wait.until(EC.element_to_be_clickable(self.CREATE_BUTTON)).click()
-        # for windows use: ('%B %#d, %Y, %#I:%M:%S %p')
-        PostCreation.CURRENT_TIME = datetime.now().strftime('%B %-d, %Y, %-I:%M:%S %p')
+        if platform.system() == 'Windows':
+            self.CURRENT_TIME = datetime.now().strftime('%B %#d, %Y, %#I:%M:%S %p')
+        else:
+            self.CURRENT_TIME = datetime.now().strftime('%B %-d, %Y, %-I:%M:%S %p')
         assert self.wait.until(EC.visibility_of_element_located(self.SUCCESS)).is_displayed()
 
     def data_last_post(self):
